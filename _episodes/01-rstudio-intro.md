@@ -24,6 +24,7 @@ keypoints:
 - "Use `rm()` to delete objects in a program."
 - "Use `install.packages()` to install packages (libraries)."
 source: Rmd
+start: true
 ---
 
 
