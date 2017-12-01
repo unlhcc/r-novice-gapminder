@@ -9,6 +9,7 @@ objectives:
 keypoints:
 - "Use vectorized operations instead of loops."
 source: Rmd
+start: true
 ---
 
 
