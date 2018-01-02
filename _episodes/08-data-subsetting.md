@@ -127,13 +127,12 @@ the `:` operator creates a sequence of numbers from the left element to the righ
 {: .r}
 
 
-
 ~~~
 [1] 1 2 3 4
 ~~~
 {: .output}
 
-
+Just like if we had used the `c` function.
 
 ~~~
 c(1, 2, 3, 4)
@@ -141,9 +140,23 @@ c(1, 2, 3, 4)
 {: .r}
 
 
-
 ~~~
 [1] 1 2 3 4
+~~~
+{: .output}
+
+
+It can be used to quickly create sequences from any starting and stoping point.
+
+~~~
+-3:2
+~~~
+{: .r}
+
+
+
+~~~
+[1] -3 -2 -1  0  1  2
 ~~~
 {: .output}
 

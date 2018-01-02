@@ -221,8 +221,8 @@ Remember that others may later read your code.
 
 
 ~~~
-(3 + (5 * (2 ^ 2))) # hard to read
 3 + 5 * 2 ^ 2       # clear, if you remember the rules
+(3 + (5 * (2 ^ 2))) # hard to read
 3 + 5 * (2 ^ 2)     # if you forget some rules, this might help
 ~~~
 {: .r}
@@ -552,6 +552,19 @@ variables and functions can have vectors as values. For example
 
 
 ~~~
+x <- 1:5
+2^x
+~~~
+{: .r}
+
+
+
+~~~
+[1]  2  4  8 16 32
+~~~
+{: .output}
+
+~~~
 2^(1:5)
 ~~~
 {: .r}
@@ -564,19 +577,6 @@ variables and functions can have vectors as values. For example
 {: .output}
 
 
-
-~~~
-x <- 1:5
-2^x
-~~~
-{: .r}
-
-
-
-~~~
-[1]  2  4  8 16 32
-~~~
-{: .output}
 
 This is incredibly powerful; we will discuss this further in an
 upcoming lesson.
@@ -723,8 +723,8 @@ network). R and RStudio have functionality for managing packages:
 * You can install packages by typing `install.packages("packagename")`,
   where `packagename` is the package name, in quotes.
 * You can update installed packages by typing `update.packages()`
-* You can remove a package with `remove.packages("packagename")`
 * You can make a package available for use with `library(packagename)`
+* You can remove a package with `remove.packages("packagename")`
 
 > ## Challenge 1
 >

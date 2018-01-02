@@ -251,32 +251,20 @@ No matter how
 complicated our analyses become, all data in R is interpreted as one of these
 basic data types. This strictness has some really important consequences.
 
-A user has added details of another cat. This information is in the file
-`data/feline-data_v2.csv`.
+Let's add details for another cat. To do this, right click on the file name in the `Files` panel and click `View File`. The file should open in the `Editor` panel. Add the following line at the bottom of the file:
 
-
-
-~~~
-file.show("data/feline-data_v2.csv")
-~~~
-{: .r}
-
-
-~~~
-coat,weight,likes_string
-calico,2.1,1
-black,5.0,0
-tabby,3.2,1
+```
 tabby,2.3 or 2.4,1
-~~~
-{: .r}
+```
 
-Load the new cats data like before, and check what type of data we find in the
+Click the save icon to save the changes.
+
+Load the new cats data like before, and check what type of data we find in the new
 `weight` column:
 
 
 ~~~
-cats <- read.csv(file="data/feline-data_v2.csv")
+cats <- read.csv(file="data/feline-data.csv")
 typeof(cats$weight)
 ~~~
 {: .r}
@@ -976,9 +964,9 @@ typeof(CATegories)
 > > ~~~
 > > {: .r}
 > >
-> > Note: new students find the help files difficult to understand; make sure to let them know
-> > that this is typical, and encourage them to take their best guess based on semantic meaning,
-> > even if they aren't sure.
+> > Note: new users often find the help files difficult to understand; this is typical.
+> > When first beginning, make a guess based on what you understand and test it in your code.
+> > You will learn a lot through trial and error!
 > {: .solution}
 {: .challenge}
 
@@ -1505,9 +1493,6 @@ ncol(matrix_example)
 > > answer <- list(dataTypes, dataStructures)
 > > ~~~
 > > {: .r}
-> > Note: it's nice to make a list in big writing on the board or taped to the wall
-> > listing all of these types and structures - leave it up for the rest of the workshop
-> > to remind people of the importance of these basics.
 > >
 > {: .solution}
 {: .challenge}
