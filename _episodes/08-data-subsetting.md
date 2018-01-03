@@ -1564,7 +1564,7 @@ be changed with the third argument, `drop = FALSE`).
 > 2. Create a new `data.frame` called `gapminder_small` that only contains rows 1 through 9
 > and 19 through 23. You can do this in one or two steps.
 >
-> > ## Solution to challenge 8
+> > ## Solution to challenge 7
 > >
 > > 1.  `gapminder` is a data.frame so needs to be subsetted on two dimensions. `gapminder[1:20, ]` subsets the data to give the first 20 rows and all columns.
 > >
