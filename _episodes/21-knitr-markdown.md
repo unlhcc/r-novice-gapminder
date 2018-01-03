@@ -125,24 +125,24 @@ You can make a bulleted list by writing a list with hyphens or
 asterisks, like this:
 
 ```
-* bold with double-asterisks
-* italics with underscores
+* bold with **double-asterisks**
+* italics with _underscores_
 * code-type font with backticks
 ```
 
 or like this:
 
 ```
-- bold with double-asterisks
-- italics with underscores
+- bold with **double-asterisks**
+- italics with _underscores_
 - code-type font with backticks
 ```
 
 Each will appear as:
 
-- bold with double-asterisks
-- italics with underscores
-- code-type font with backticks
+- bold with **double-asterisks**
+- italics with _underscores_
+- code-type font with `backticks`
 
 (I prefer hyphens over asterisks, myself.)
 
@@ -150,16 +150,16 @@ You can make a numbered list by just using numbers. You can use the
 same number over and over if you want:
 
 ```
-1. bold with double-asterisks
-1. italics with underscores
+1. bold with **double-asterisks**
+1. italics with _underscores_
 1. code-type font with backticks
 ```
 
 This will appear as:
 
-1. bold with double-asterisks
-1. italics with underscores
-1. code-type font with backticks
+1. bold with **double-asterisks**
+1. italics with _underscores_
+1. code-type font with `backticks`
 
 You can make section headers of different sizes by initiating a line
 with some number of `#` symbols:
@@ -172,19 +172,7 @@ with some number of `#` symbols:
 ```
 
 You _compile_ the R Markdown document to an html webpage by clicking
-the "Knit HTML" in the upper-left. And note the little question mark
-next to it; click the question mark and you'll get a "Markdown Quick
-Reference" (with the Markdown syntax) as well to the RStudio
-documentation on R Markdown.
-
-> ## Challenge
->
-> Create a new R Markdown document. Delete all of the R code chunks
-> and write a bit of Markdown (some sections, some italicized
-> text, and an itemized list).
->
-> Convert the document to a webpage.
-{: .challenge}
+the "Knit" in the upper-left.
 
 
 ## A bit more Markdown
@@ -206,7 +194,17 @@ you can use `$ $` and `$$ $$` to insert math equations, like
 $$y = \mu + \sum_{i=1}^p \beta_i x_i + \epsilon$$
 ```
 
-
+> ## Challenge 1
+>
+> Create a new R Markdown document. Delete all of the R code chunks
+> and write a bit of Markdown (some sections, some italicized
+> text, and an itemized list).
+>
+> Add at least two elements from the **A bit more Markdown** section
+> (a hyperlink, image or LaTex equation).
+>
+> Convert the document to a webpage.
+{: .challenge}
 
 ## R code chunks
 
@@ -229,13 +227,50 @@ a name, as they will help you to fix errors and, if any graphs are
 produced, the file names are based on the name of the code chunk that
 produced them.
 
-> ## Challenge
+> ## Challenge 2
 >
-> Add code chunks to
+> Add code chunks to your Markdown document which will:
 >
 > - Load the ggplot2 package
 > - Read the gapminder data
 > - Create a plot
+>
+> > Solution for challenge 2
+> > 
+> > Add code chunks to your Markdown document which will:
+> >
+> > - Load the ggplot2 package
+> > 
+> > ~~~
+> > &#96;&#96;&#96;{r ggplot}
+> > library(ggplot2)
+> > &#96;&#96;&#96;
+> > ~~~
+> > {. r}
+> >
+> > - Read the gapminder data
+> > 
+> > ~~~
+> > &#96;&#96;&#96;{r load_data}
+> > gapminder <- read.csv(file = "data/gapminder-FiveYearData.csv",
+> >                       header = TRUE)
+> > &#96;&#96;&#96;
+> > ~~~
+> > {. r}
+> > 
+> > - Create a plot
+> > 
+> > ~~~
+> > &#96;&#96;&#96;{r plot_lifeExp_vs_time}
+> > ggplot(data = gapminder, aes(x = year, y = lifeExp, color = country)) +
+> >   geom_line() + 
+> >   theme(legend.position = "none")
+> > &#96;&#96;&#96;
+> > ~~~
+> > {. r}
+> > 
+> > Compile your document and check out the new output.
+>{: .solution}
 {: .challenge}
 
 ## How things get compiled
@@ -272,7 +307,6 @@ So you might write:
 
 <pre>
 &#96;&#96;&#96;{r load_libraries, echo=FALSE, message=FALSE}
-library("dplyr")
 library("ggplot2")
 &#96;&#96;&#96;
 </pre>
@@ -289,17 +323,69 @@ knitr::opts_chunk$set(fig.path="Figs/", message=FALSE, warning=FALSE,
 
 The `fig.path` option defines where the figures will be saved. The `/`
 here is really important; without it, the figures would be saved in
-the standard place but just with names that being with `Figs`.
+the standard place but just with names that begin with `Figs`.
 
 If you have multiple R Markdown files in a common directory, you might
 want to use `fig.path` to define separate prefixes for the figure file
 names, like `fig.path="Figs/cleaning-"` and `fig.path="Figs/analysis-"`.
 
 
-> ## Challenge
+> ## Challenge 3
 >
-> Use chunk options to control the size of a figure and to hide the
-> code.
+> Edit the code chunks you added in challenge 2 to use chunk options to control the size of a figure
+> and to hide the code.
+>
+> > Solution for challenge 3
+> > 
+> > Edit the code chunks you added in challenge 2 to use chunk options to control the size of a figure
+> > and to hide the code.
+> > 
+> > First, let's hide the code that we used to load the data. To do that, we will need to change this:
+> > 
+> > ~~~
+> > &#96;&#96;&#96;{r load_data}
+> > gapminder <- read.csv(file = "data/gapminder-FiveYearData.csv",
+> >                       header = TRUE)
+> > &#96;&#96;&#96;
+> > ~~~
+> > {. r}
+> > 
+> > To this:
+> > 
+> > ~~~
+> > &#96;&#96;&#96;{r load_data echo=FALSE}
+> > gapminder <- read.csv(file = "data/gapminder-FiveYearData.csv",
+> >                       header = TRUE)
+> > &#96;&#96;&#96;
+> > ~~~
+> > {. r}
+> > 
+> > Then, let's change the code that created a plot to modify the figure size. Remember that
+> > the code chunk looked like this initially:
+> > 
+> > ~~~
+> > &#96;&#96;&#96;{r plot_lifeExp_vs_time}
+> > ggplot(data = gapminder, aes(x = year, y = lifeExp, color = country)) +
+> >   geom_line() + 
+> >   theme(legend.position = "none")
+> > &#96;&#96;&#96;
+> > ~~~
+> > {. r}
+> > 
+> > Let's change the plot to be smaller at 5 inches:
+> >
+> > ~~~
+> > &#96;&#96;&#96;{r plot_lifeExp_vs_time fig.width=5}
+> > ggplot(data = gapminder, aes(x = year, y = lifeExp, color = country)) +
+> >   geom_line() + 
+> >   theme(legend.position = "none")
+> > &#96;&#96;&#96;
+> > ~~~
+> > {. r}
+> > 
+>{: .solution}
+{: .challenge}
+
 {: .challenge}
 
 
@@ -316,17 +402,11 @@ Perhaps precede the paragraph with a larger code chunk that does
 calculations and defines things, with `include=FALSE` for that larger
 chunk (which is the same as `echo=FALSE` and `results="hide"`).
 
-I'm very particular about rounding in such situations. I may want
-`2.0`, but `round(2.03, 1)` will give just `2`.
-
-The
-[`myround`](https://github.com/kbroman/broman/blob/master/R/myround.R)
-function in my [R/broman](https://github.com/kbroman) package handles
-this.
-
-> ## Challenge
+> ## Challenge 4
 >
-> Try out a bit of in-line R code.
+> Add a bit of inline code to your markdown document. Compile it and look at the output
+> to verify that it worked.
+>
 {: .challenge}
 
 

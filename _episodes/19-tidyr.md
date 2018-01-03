@@ -13,25 +13,22 @@ keypoints:
 source: Rmd
 ---
 
+There are two standardized data formats: 'long' and 'wide'. You may find data input may be simpler or some other applications may prefer the 'wide' format. However, many of `R`'s functions have
+been designed assuming you have 'long' format data. This tutorial will help you
+efficiently transform your data regardless of original format.
 
-
-Researchers often want to manipulate their data from the 'wide' to the 'long'
-format, or vice-versa. The 'long' format is where:
+In the 'long' format:
 
  - each column is a variable
  - each row is an observation
 
-In the 'long' format, you usually have 1 column for the observed variable and
+In other words, with the 'long' format, you usually have 1 column for the observed variable and
 the other columns are ID variables.
-
 
 For the 'wide' format each row is often a site/subject/patient and you have
 multiple observation variables containing the same type of data. These can be
 either repeated observations over time, or observation of multiple variables (or
-a mix of both). You may find data input may be simpler or some other
-applications may prefer the 'wide' format. However, many of `R`'s functions have
-been designed assuming you have 'long' format data. This tutorial will help you
-efficiently transform your data regardless of original format.
+a mix of both). 
 
 ![](../fig/14-tidyr-fig1.png)
 
@@ -48,8 +45,8 @@ installed dplyr in the previous lesson):
 
 
 ~~~
-#install.packages("tidyr")
-#install.packages("dplyr")
+install.packages("tidyr")
+install.packages("dplyr")
 ~~~
 {: .r}
 

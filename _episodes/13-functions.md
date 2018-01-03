@@ -48,17 +48,8 @@ several operations with a single command.
 
 ## Defining a function
 
-Let's open a new R script file in the `functions/` directory and call it
+Let's open a new R script file in the `src/` directory and call it
 functions-lesson.R.
-
-
-~~~
-my_sum <- function(a, b) {
-  the_sum <- a + b
-  return(the_sum)
-}
-~~~
-{: .r}
 
 Let's define a function `fahr_to_kelvin()` that converts temperatures from
 Fahrenheit to Kelvin:
@@ -153,45 +144,64 @@ fahr_to_kelvin(212)
 The real power of functions comes from mixing, matching and combining them
 into ever-larger chunks to get the effect we want.
 
-Let's define two functions that will convert temperature from Fahrenheit to
-Kelvin, and Kelvin to Celsius:
-
+Let's use our two previous functions to create a new function that will convert from
+Farenheit to Celsius:
 
 ~~~
-fahr_to_kelvin <- function(temp) {
-  kelvin <- ((temp - 32) * (5 / 9)) + 273.15
-  return(kelvin)
-}
-
-kelvin_to_celsius <- function(temp) {
-  celsius <- temp - 273.15
-  return(celsius)
+fahr_to_celsius <- function(temp) {
+  temp_k <- fahr_to_kelvin(temp)
+  result <- kelvin_to_celsius(temp_k)
+  return(result)
 }
 ~~~
 {: .r}
 
 > ## Challenge 2
 >
-> Define the function to convert directly from Fahrenheit to Celsius,
-> by reusing the two functions above (or using your own functions if you
-> prefer).
+> Define a function to convert centimeters to yards. Try doing it two different ways, as a single function
+> and by combining two individual functions like we did above.
 >
+> Hint: the following conversion factors might be helpful:
+> - 1 inch = 2.54 centimeters
+> - 1 yard = 36 inches
+> - 1 meter = 100 centimeters
+> - 1 yard = 0.914 meters
 >
 > > ## Solution to challenge 2
 > >
-> > Define the function to convert directly from Fahrenheit to Celsius,
-> > by reusing these two functions above
+> > Using a single function:
 > >
-> >
-> > 
 > > ~~~
-> > fahr_to_celsius <- function(temp) {
-> >   temp_k <- fahr_to_kelvin(temp)
-> >   result <- kelvin_to_celsius(temp_k)
-> >   return(result)
+> > cm_to_yards <- function(cms) {
+> >   inches <- cms / 2.54
+> >   yards <- inches / 36
+> >   return(yards)
 > > }
 > > ~~~
 > > {: .r}
+> >
+> > Combining two smaller functions:
+> > 
+> > ~~~
+> > cm_to_inches <- function(cms) {
+> >   inches <- cms / 2.54
+> >   return(inches)
+> > }
+> > 
+> > inches_to_yards <- function(inches) {
+> >   yards <- inches / 36
+> >   return(yards)
+> > }
+> > 
+> > cm_to_inches <- function(cms) {
+> >   inches <- cm_to_inches(cms)
+> >   yards <- inches_to_yards(inches)
+> >   return(yards)
+> > }
+> > ~~~
+> > {: .r}
+> > 
+> > Your solution may be different depending on how you did your intermediate conversions.
 > {: .solution}
 {: .challenge}
 
@@ -321,7 +331,7 @@ Error: is.numeric(temp) is not TRUE
 > > ~~~
 > > {: .r}
 > {: .solution}
-{: .challenge}```
+{: .challenge}
 
 ## More on combining functions
 
@@ -339,20 +349,12 @@ calcGDP <- function(dat) {
 ~~~
 {: .r}
 
-We define `calcGDP()` by assigning it to the output of `function`. The list of
-argument names are contained within parentheses. Next, the body of the function 
--- the statements executed when you call the function -- is contained within
-curly braces (`{}`).
+As before, we define `calcGDP()` by assigning it to the output of `function`. The argument, `dat` will be
+passed to the function when it is called. All commands we want our function to execute, the body of the function, is contained within curly braces (`{}`).
 
-We've indented the statements in the body by two spaces. This makes the code
-easier to read but does not affect how it operates.
+To be consistant, we've indented the statements in the body by two spaces just like before.
 
-When we call the function, the values we pass to it are assigned to the
-arguments, which become variables inside the body of the function.
-
-Inside the function, we use the `return()` function to send back the result.
-This `return()` function is optional: R will automatically return the results of
-whatever command is executed on the last line of the function.
+And even though it isn't necessary, we use the `return()` function to send back the result.
 
 
 
@@ -390,15 +392,6 @@ calcGDP <- function(dat, year=NULL, country=NULL) {
 ~~~
 {: .r}
 
-If you've been writing these functions down into a separate R script
-(a good idea!), you can load in the functions into our R session by using the
-`source()` function:
-
-
-~~~
-source("functions/functions-lesson.R")
-~~~
-{: .r}
 
 Ok, so there's a lot going on in this function now. In plain English, the
 function now subsets the provided data by year if the year argument isn't empty,
@@ -510,6 +503,16 @@ calculate the GDP for:
 
 By using `%in%` instead, we can also give multiple years or countries to those
 arguments.
+
+If you've been writing these functions down into a separate R script
+(a good idea!), you can load in the functions into our R session by using the
+`source()` function:
+
+
+~~~
+source("functions/functions-lesson.R")
+~~~
+{: .r}
 
 > ## Tip: Pass by value
 >

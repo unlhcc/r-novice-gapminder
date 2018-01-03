@@ -181,8 +181,6 @@ a
 > `all()` will return `TRUE` if *all* elements of a vector are `TRUE`
 {: .callout}
 
-Most functions also operate element-wise on vectors:
-
 **Functions**
 
 ~~~
@@ -315,6 +313,8 @@ m * -1
 > >
 > > 1. `m ^ -1`
 > >
+> > This produces a matrix where each element is the multiplicative inverse of the
+> > original elements (1/n where n is the original value).
 > > 
 > > ~~~
 > >           [,1]      [,2]      [,3]       [,4]
@@ -326,6 +326,9 @@ m * -1
 > >
 > > 2. `m * c(1, 0, -1)`
 > >
+> > This produces a matrix where each element is multiplied by the corresponding element in 
+> > `c(1, 0, -1)`. Remember that matrices are operated on by column, so the given vector will
+> > be recycled for each column (see how all the values in row 2 are 0).
 > > 
 > > ~~~
 > >      [,1] [,2] [,3] [,4]
@@ -337,12 +340,27 @@ m * -1
 > >
 > > 3. `m > c(0, 20)`
 > >
-> > 
+> > This produces a logical matrix which is TRUE when the inequality is true and FALSE otherwise.
+> > The vector `c(0, 20)` is recycled after each 2 elements.
+> >  
 > > ~~~
 > >       [,1]  [,2]  [,3]  [,4]
 > > [1,]  TRUE FALSE  TRUE FALSE
 > > [2,] FALSE  TRUE FALSE  TRUE
 > > [3,]  TRUE FALSE  TRUE FALSE
+> > ~~~
+> > {: .output}
+> >
+> > 4. `m * c(1, 0, -1, 2)`
+> >
+> > This is the same as #2, but since the second vector is longer, it will only be recycled 3 times.
+> > (see how the zeros are no longer lined up in the middle row).
+> > 
+> > ~~~
+> >      [,1] [,2] [,3] [,4]
+> > [1,]    1    8   -7    0
+> > [2,]    0    5   16  -11
+> > [3,]   -3    0    9   24
 > > ~~~
 > > {: .output}
 > >
@@ -469,5 +487,7 @@ m * -1
 > > ~~~
 > > {: .output}
 > >
+> > We'll talk more about writing and using functions in the next lesson!
+> > 
 > {: .solution}
 {: .challenge}

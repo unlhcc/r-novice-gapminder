@@ -397,27 +397,6 @@ d_ply(
 
 > ## Challenge 1
 >
-> Calculate the average life expectancy per continent. Which has the longest?
-> Which had the shortest?
-{: .challenge}
-
-> ## Challenge 2
->
-> Calculate the average life expectancy per continent and year. Which had the
-> longest and shortest in 2007? Which had the greatest change in between 1952
-> and 2007?
-{: .challenge}
-
-
-> ## Advanced Challenge
->
-> Calculate the difference in mean life expectancy between
-> the years 1952 and 2007 from the output of challenge 2
-> using one of the `plyr` functions.
-{: .challenge}
-
-> ## Alternate Challenge if class seems lost
->
 > Without running them, which of the following will calculate the average
 > life expectancy per continent:
 >
@@ -471,4 +450,57 @@ d_ply(
 > ~~~
 > {: .r}
 >
+> > Solution to challenge 1
+> > 
+> > Without running them, which of the following will calculate the average
+> > life expectancy per continent:
+> > 
+> > The correct answer is 3.
+> > 
+> > 1 will not work because the .variable argument is formatted incorrectly.
+> > 
+> > 2 will not work because we need to use the dummy function to operate on a different column
+> > than the one we are grouping by.
+> > 
+> > 4 will not work because `adply()` is expecting an array as the input, and `gapminder`
+> > is a `data.frame`.
+>{: .solution}
 {: .challenge}
+
+
+> ## Challenge 2
+>
+> Calculate the average life expectancy per continent. Which has the longest?
+> Which had the shortest?
+>
+> > Solution to challenge 2
+> > 
+> > To calculate the average life expectancy per continent, we can use `ddply` to calculate the averages,
+> > and pipe the result into `arrange()` to sort the values to easily find out the shortest and longest:
+> > 
+> > ~~~
+> > ave_lifeExp_by_cont <- ddply(
+> >   .data = gapminder,
+> >   .variables = "continent",
+> >   .fun = function(x) mean(x$lifeExp)
+> > ) %>% arrange(V1)
+> > 
+> > # shortest life expectancy
+> > print(paste(
+> >   ave_lifeExp_by_cont$continent[1],
+> >   "has the shortest life expectancy at",
+> >   ave_lifeExp_by_cont$V1[1]))
+> > 
+> > # longest life expectancy
+> > print(paste(
+> >   ave_lifeExp_by_cont$continent[nrow(ave_lifeExp_by_cont)]
+> >   "has the longest life expectancy at",
+> >   ave_lifeExp_by_cont$V1[nrow(ave_lifeExp_by_cont)]))
+> > ~~~
+> > {: .r}
+> >
+> > Notice how we used `nrow()` instead of just `5`? This allows our code to be reused on datasets
+> > that might have a different number of continents.
+>{: .solution}
+{: .challenge}
+
