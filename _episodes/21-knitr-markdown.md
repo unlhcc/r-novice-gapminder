@@ -342,42 +342,13 @@ names, like `fig.path="Figs/cleaning-"` and `fig.path="Figs/analysis-"`.
 > > 
 > > First, let's hide the code that we used to load the data. To do that, we will need to change this:
 > > 
-> > <pre>
+> > ```
 > > &#96;&#96;&#96;{r load_data}
 > > gapminder <- read.csv(file = "data/gapminder-FiveYearData.csv",
 > >                       header = TRUE)
 > > &#96;&#96;&#96;
-> > </pre>
+> > ```
 > > 
-> > To this:
-> > 
-> > <pre>
-> > &#96;&#96;&#96;{r load_data echo=FALSE}
-> > gapminder <- read.csv(file = "data/gapminder-FiveYearData.csv",
-> >                       header = TRUE)
-> > &#96;&#96;&#96;
-> > </pre>
-> > 
-> > Then, let's change the code that created a plot to modify the figure size. Remember that
-> > the code chunk looked like this initially:
-> > 
-> > <pre>
-> > &#96;&#96;&#96;{r plot_lifeExp_vs_time}
-> > ggplot(data = gapminder, aes(x = year, y = lifeExp, color = country)) +
-> >   geom_line() + 
-> >   theme(legend.position = "none")
-> > &#96;&#96;&#96;
-> > </pre>
-> > 
-> > Let's change the plot to be smaller at 5 inches:
-> >
-> > <pre>
-> > &#96;&#96;&#96;{r plot_lifeExp_vs_time fig.width=5}
-> > ggplot(data = gapminder, aes(x = year, y = lifeExp, color = country)) +
-> >   geom_line() + 
-> >   theme(legend.position = "none")
-> > &#96;&#96;&#96;
-> > </pre>
 > > 
 >{: .solution}
 {: .challenge}
