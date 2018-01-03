@@ -330,7 +330,7 @@ want to use `fig.path` to define separate prefixes for the figure file
 names, like `fig.path="Figs/cleaning-"` and `fig.path="Figs/analysis-"`.
 
 
-> ## Challenge 3
+> ## Challenge 3 - Test
 >
 > Edit the code chunks you added in challenge 2 to use chunk options to control the size of a figure
 > and to hide the code.
@@ -382,7 +382,6 @@ names, like `fig.path="Figs/cleaning-"` and `fig.path="Figs/analysis-"`.
 >{: .solution}
 {: .challenge}
 
-{: .challenge}
 
 
 ## Inline R code
