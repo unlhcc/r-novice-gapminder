@@ -511,7 +511,7 @@ x[names(x) == "a"]
 > vector are `TRUE`).
 {: .callout}
 
-> ## Challenge 3
+> ## Challenge 2
 >
 > Given the following code:
 >
@@ -533,7 +533,7 @@ x[names(x) == "a"]
 >
 > Write a subsetting command to return the values in x that are greater than 4 and less than 7.
 >
-> > ## Solution to challenge 3
+> > ## Solution to challenge 2
 > >
 > > 
 > > ~~~
@@ -1057,7 +1057,7 @@ matrix(1:6, nrow=2, ncol=3, byrow=TRUE)
 Matrices can also be subsetted using their rownames and column names
 instead of their row and column indices.
 
-> ## Challenge 4
+> ## Challenge 3
 >
 > Given the following code:
 >
@@ -1088,7 +1088,7 @@ instead of their row and column indices.
 >
 > D. `m[2,c(4,5)]`
 >
-> > ## Solution to challenge 4
+> > ## Solution to challenge 3
 > >
 > > From the above choices, `D` would give us the correct subset.
 > >
@@ -1264,7 +1264,7 @@ xlist[[2]][2:4]
 {: .output}
 
 
-> ## Challenge 5
+> ## Challenge 4
 > Given the following list:
 >
 > 
@@ -1276,7 +1276,7 @@ xlist[[2]][2:4]
 > Using your knowledge of both list and vector subsetting, extract the number 2 from xlist.
 > Hint: the number 2 is contained within the "b" item in the list.
 >
-> > ## Solution to challenge 5
+> > ## Solution to challenge 4
 > >
 > > 
 > > ~~~
@@ -1318,7 +1318,7 @@ xlist[[2]][2:4]
 {: .challenge}
 
 
-> ## Challenge 6 - Advanced
+> ## Challenge 5 - Advanced
 > To create a linear model showing the relationship between the response variable population 
 > and predictor variable lifeExp, we use the following command: 
 >
@@ -1331,7 +1331,7 @@ xlist[[2]][2:4]
 > Extract the residual degrees of freedom (hint: `attributes()` will help you, don't forget
 > check out the help documentation!)
 >
-> > ## Solution to challenge 6
+> > ## Solution to challenge 5
 > >
 > > the `attributes()` command lists the attributes of the object `mod`:
 > > ~~~
@@ -1456,7 +1456,7 @@ gapminder[3,]
 But for a single column the result will be a vector (this can
 be changed with the third argument, `drop = FALSE`).
 
-> ## Challenge 7
+> ## Challenge 6
 >
 > Fix each of the following common data frame subsetting errors:
 >
@@ -1502,7 +1502,7 @@ be changed with the third argument, `drop = FALSE`).
 >    ~~~
 >    {: .r}
 >
-> > ## Solution to challenge 7
+> > ## Solution to challenge 6
 > >
 > > Fix each of the following common data frame subsetting errors:
 > >
@@ -1556,7 +1556,7 @@ be changed with the third argument, `drop = FALSE`).
 > {: .solution}
 {: .challenge}
 
-> ## Challenge 8
+> ## Challenge 7
 >
 > 1. Why does `gapminder[1:20]` return an error? How does it differ from `gapminder[1:20, ]`?
 >
@@ -1568,12 +1568,14 @@ be changed with the third argument, `drop = FALSE`).
 > >
 > > 1.  `gapminder` is a data.frame so needs to be subsetted on two dimensions. `gapminder[1:20, ]` subsets the data to give the first 20 rows and all columns.
 > >
-> > 2. 
+> > 2. To do this in one step, you can use the command:
 > >
-> > 
 > > ~~~
 > > gapminder_small <- gapminder[c(1:9, 19:23),]
 > > ~~~
 > > {: .r}
+> > 
+> > There are many ways to subset in this way, you might have come up with a different approach.
+> > 
 > {: .solution}
 {: .challenge}

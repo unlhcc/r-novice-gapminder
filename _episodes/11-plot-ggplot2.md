@@ -329,7 +329,10 @@ variables and their visual representation.
 >
 > Modify your solution to Challenge 4a so that the
 > points are now a different shape and are colored by continent with new
-> trendlines.  Hint: The color argument can be used inside the aesthetic.
+> trendlines.  
+> 
+> Hint: The color argument can be used inside the aesthetic. To find shape codes, use the help file
+> for `points` which can be found with the command `?points`.
 >
 > > ## Solution to challenge 4b
 > >
