@@ -340,10 +340,10 @@ x
 > ~~~
 > {: .output}
 >
-> After you find 3 different commands, compare notes with your neighbour. Did you have different strategies?
+> After you find 3 different commands, compare notes with your neighbor. Did you have different strategies?
 >
 > > ## Solution to challenge 1
-> >
+> > Any of the following are valid approaches:
 > > 
 > > ~~~
 > > x[2:4]
@@ -396,6 +396,8 @@ x
 > > 6.2 7.1 4.8 
 > > ~~~
 > > {: .output}
+> >
+> > Did you find any others that we didn't include here?
 > >
 > {: .solution}
 {: .challenge}
@@ -753,12 +755,14 @@ x[! names(x) %in% c("a","c") ]
 > Asia: how do we set up an operation to produce a logical vector that
 > is `TRUE` for all of the countries in southeast Asia and `FALSE` otherwise?
 >
-> Suppose you have these data:
+> Suppose you have the following data:
 > 
 > ~~~
 > seAsia <- c("Myanmar","Thailand","Cambodia","Vietnam","Laos")
+>
 > ## read in the gapminder data that we downloaded in episode 2
 > gapminder <- read.csv("data/gapminder-FiveYearData.csv", header=TRUE)
+>
 > ## extract the `country` column from a data frame (we'll see this later);
 > ## convert from a factor to a character;
 > ## and get just the non-repeated elements
@@ -773,22 +777,40 @@ x[! names(x) %in% c("a","c") ]
 > 
 > > ## Solution to challenge 2
 > >
-> > - The **wrong** way to do this problem is `countries==seAsia`. This
-> > gives a warning (`"In countries == seAsia : longer object length is not a multiple of shorter object length"`) and the wrong answer (a vector of all
+> > - The **wrong** way to do this problem is:
+> > ~~~
+> > (countries==seAsia)
+> > ~~~
+> > {: .r} 
+> >
+> > This gives a warning:
+> >
+> > ~~~
+> > "In countries == seAsia : longer object length is not a multiple of shorter object length"
+> > ~~~
+> > {: .error} 
+> > and the wrong answer (a vector of all
 > > `FALSE` values), because none of the recycled values of `seAsia` happen
 > > to line up correctly with matching values in `country`.
+> >
 > > - The **clunky** (but technically correct) way to do this problem is
 > > 
 > > ~~~
-> >  (countries=="Myanmar" | countries=="Thailand" |
-> >  countries=="Cambodia" | countries == "Vietnam" | countries=="Laos")
+> >  (countries=="Myanmar" | countries=="Thailand" | countries=="Cambodia" | countries == "Vietnam" | countries=="Laos")
 > > ~~~
 > > {: .r}
+> > 
 > > (or `countries==seAsia[1] | countries==seAsia[2] | ...`). This
 > > gives the correct values, but hopefully you can see how awkward it
 > > is (what if we wanted to select countries from a much longer list?).
-> > - The best way to do this problem is `countries %in% seAsia`, which
-> > is both correct and easy to type (and read).
+> > 
+> > - The best way to do this problem is:
+> > ~~~
+> > (countries %in% seAsia)
+> > ~~~
+> > {: .r}
+> > 
+> > which is both correct and easy to type (and read).
 > {: .solution}
 {: .challenge}
 
@@ -813,6 +835,7 @@ do we subset the other data structures?
 
 Factor subsetting works the same way as vector subsetting.
 
+We can subset by value:
 
 ~~~
 f <- factor(c("a", "a", "b", "c", "c", "d"))
@@ -829,6 +852,7 @@ Levels: a b c d
 {: .output}
 
 
+Using the `%in%` operator:
 
 ~~~
 f[f %in% c("b", "c")]
@@ -843,7 +867,7 @@ Levels: a b c d
 ~~~
 {: .output}
 
-
+Or we can subset by index as well:
 
 ~~~
 f[1:3]
@@ -858,7 +882,7 @@ Levels: a b c d
 ~~~
 {: .output}
 
-Skipping elements will not remove the level
+We can even exclude elements just like we did before. However, note that skipping elements will not remove the level
 even if no more of that category exists in the factor:
 
 
@@ -1066,7 +1090,10 @@ instead of their row and column indices.
 >
 > > ## Solution to challenge 4
 > >
-> > D
+> > From the above choices, `D` would give us the correct subset.
+> >
+> > Note: you can use `:` and `c` interchangeably. For this problem, the command `m[2, 4:5]`
+> > would also give the correct subset.
 > {: .solution}
 {: .challenge}
 
@@ -1203,6 +1230,40 @@ xlist$data
 ~~~
 {: .output}
 
+We can combine subsetting operators to further filter results:
+
+~~~
+xlist$data[1]
+~~~
+{: .r}
+
+
+
+~~~
+  Sepal.Length
+1          5.1
+2          4.9
+3          4.7
+4          4.6
+5          5.0
+6          5.4
+~~~
+{: .output}
+
+
+~~~
+xlist[[2]][2:4]
+~~~
+{: .r}
+
+
+
+~~~
+[1] 2 3 4
+~~~
+{: .output}
+
+
 > ## Challenge 5
 > Given the following list:
 >
@@ -1257,8 +1318,9 @@ xlist$data
 {: .challenge}
 
 
-> ## Challenge 6
-> Given a linear model:
+> ## Challenge 6 - Advanced
+> To create a linear model showing the relationship between the response variable population 
+> and predictor variable lifeExp, we use the following command: 
 >
 > 
 > ~~~
@@ -1266,16 +1328,31 @@ xlist$data
 > ~~~
 > {: .r}
 >
-> Extract the residual degrees of freedom (hint: `attributes()` will help you)
+> Extract the residual degrees of freedom (hint: `attributes()` will help you, don't forget
+> check out the help documentation!)
 >
 > > ## Solution to challenge 6
 > >
-> > 
+> > the `attributes()` command lists the attributes of the object `mod`:
 > > ~~~
-> > attributes(mod) ## `df.residual` is one of the names of `mod`
+> > attributes(mod)       ## `df.residual` is one of the names of `mod`
 > > ~~~
 > > {: .r}
+> >
+> >  
+> > ~~~
+> > $names
+> >  [1] "coefficients"  "residuals"     "effects"       "rank"          "fitted.values" "assign"       
+> >  [7] "qr"            "df.residual"   "xlevels"       "call"          "terms"         "model"        
 > > 
+> > $class
+> > [1] "aov" "lm" 
+> > ~~~
+> > {: .output}
+> > 
+> > We can see that `mod` has a component called `df.residual`. We can access this value by 
+> > using the `$` operator.
+> >
 > > ~~~
 > > mod$df.residual
 > > ~~~

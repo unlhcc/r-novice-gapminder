@@ -43,9 +43,6 @@ Say, for example, that we want R to print a message if a variable `x` has a part
 
 
 ~~~
-# sample a random number from a Poisson distribution
-# with a mean (lambda) of 8
-
 x <- 8
 
 if (x >= 10) {
@@ -474,6 +471,9 @@ output_vector2
 > whether the mean life expectancy is smaller or larger than 50
 > years.
 >
+> Hint: You might find the functions `unique()`, `cat()`, and `mean()` helpful. Check out
+> the help documentation for these functions to see how to use them.
+>
 > > ## Solution to Challenge 3
 > >
 > > **Step 1**:  We want to make sure we can extract all the unique values of the continent vector
@@ -494,7 +494,7 @@ output_vector2
 > > 
 > > ~~~
 > > for( iContinent in unique(gapminder$continent) ){
-> >    tmp <- mean(subset(gapminder, continent==iContinent)$lifeExp)
+> >    tmp <- mean(gapminder$lifeExp[gapminder$continent == iContinent])
 > >    cat("Average Life Expectancy in", iContinent, "is", tmp, "\n")
 > >    rm(tmp)
 > > }
@@ -512,7 +512,7 @@ output_vector2
 > > thresholdValue <- 50
 > > > >
 > > for( iContinent in unique(gapminder$continent) ){
-> >    tmp <- mean(subset(gapminder, continent==iContinent)$lifeExp)
+> >    tmp <- mean(gapminder$lifeExp[gapminder$continent == iContinent])
 > >    
 > >    if(tmp < thresholdValue){
 > >        cat("Average Life Expectancy in", iContinent, "is less than", thresholdValue, "\n")
@@ -522,7 +522,7 @@ output_vector2
 > >         } # end if else condition
 > >    rm(tmp)
 > >    } # end for loop
-> > > >
+> > 
 > > ~~~
 > > {: .r}
 > {: .solution}
@@ -530,7 +530,7 @@ output_vector2
 
 > ## Challenge 4
 >
-> Modify the script from Challenge 4 to loop over each
+> Modify the script from Challenge 3 to loop over each
 > country. This time print out whether the life expectancy is
 > smaller than 50, between 50 and 70, or greater than 70.
 >
@@ -543,7 +543,7 @@ output_vector2
 > >  upperThreshold <- 70
 > >  
 > > for( iCountry in unique(gapminder$country) ){
-> >     tmp <- mean(subset(gapminder, country==iCountry)$lifeExp)
+> >     tmp <- mean(gapminder$lifeExp[gapminder$continent == iContinent])
 > >     
 > >     if(tmp < lowerThreshold){
 > >         cat("Average Life Expectancy in", iCountry, "is less than", lowerThreshold, "\n")
@@ -566,6 +566,9 @@ output_vector2
 > Write a script that loops over each country in the `gapminder` dataset,
 > tests whether the country starts with a 'B', and graphs life expectancy
 > against time as a line graph if the mean life expectancy is under 50 years.
+>
+> Hint: R has a `grep()` function that works like the `grep` you learned in the shell.
+> Look at the help documentation for information on how to use it.
 >
 > > Solution for Challenge 5
 > >
