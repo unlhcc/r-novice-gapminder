@@ -746,7 +746,7 @@ x[! names(x) %in% c("a","c") ]
 ~~~
 {: .output}
 
-> ## Challenge 2
+> ## Challenge 3
 >
 > Selecting elements of a vector that match any of a list of components
 > is a very common data analysis task. For example, the gapminder data set
@@ -775,7 +775,7 @@ x[! names(x) %in% c("a","c") ]
 > an elegant way (using `%in%`). See whether you can come up with all three
 > and explain how they (don't) work.
 > 
-> > ## Solution to challenge 2
+> > ## Solution to challenge 3
 > >
 > > - The **wrong** way to do this problem is:
 > > ~~~
@@ -1057,7 +1057,7 @@ matrix(1:6, nrow=2, ncol=3, byrow=TRUE)
 Matrices can also be subsetted using their rownames and column names
 instead of their row and column indices.
 
-> ## Challenge 3
+> ## Challenge 4
 >
 > Given the following code:
 >
@@ -1088,7 +1088,7 @@ instead of their row and column indices.
 >
 > D. `m[2,c(4,5)]`
 >
-> > ## Solution to challenge 3
+> > ## Solution to challenge 4
 > >
 > > From the above choices, `D` would give us the correct subset.
 > >
@@ -1264,7 +1264,7 @@ xlist[[2]][2:4]
 {: .output}
 
 
-> ## Challenge 4
+> ## Challenge 5
 > Given the following list:
 >
 > 
@@ -1276,7 +1276,7 @@ xlist[[2]][2:4]
 > Using your knowledge of both list and vector subsetting, extract the number 2 from xlist.
 > Hint: the number 2 is contained within the "b" item in the list.
 >
-> > ## Solution to challenge 4
+> > ## Solution to challenge 5
 > >
 > > 
 > > ~~~
@@ -1318,7 +1318,7 @@ xlist[[2]][2:4]
 {: .challenge}
 
 
-> ## Challenge 5 - Advanced
+> ## Challenge 6 - Advanced
 > To create a linear model showing the relationship between the response variable population 
 > and predictor variable lifeExp, we use the following command: 
 >
@@ -1331,7 +1331,7 @@ xlist[[2]][2:4]
 > Extract the residual degrees of freedom (hint: `attributes()` will help you, don't forget
 > check out the help documentation!)
 >
-> > ## Solution to challenge 5
+> > ## Solution to challenge 6
 > >
 > > the `attributes()` command lists the attributes of the object `mod`:
 > > ~~~
@@ -1456,7 +1456,7 @@ gapminder[3,]
 But for a single column the result will be a vector (this can
 be changed with the third argument, `drop = FALSE`).
 
-> ## Challenge 6
+> ## Challenge 7
 >
 > Fix each of the following common data frame subsetting errors:
 >
@@ -1502,7 +1502,7 @@ be changed with the third argument, `drop = FALSE`).
 >    ~~~
 >    {: .r}
 >
-> > ## Solution to challenge 6
+> > ## Solution to challenge 7
 > >
 > > Fix each of the following common data frame subsetting errors:
 > >
@@ -1556,7 +1556,7 @@ be changed with the third argument, `drop = FALSE`).
 > {: .solution}
 {: .challenge}
 
-> ## Challenge 7
+> ## Challenge 8
 >
 > 1. Why does `gapminder[1:20]` return an error? How does it differ from `gapminder[1:20, ]`?
 >
@@ -1564,7 +1564,7 @@ be changed with the third argument, `drop = FALSE`).
 > 2. Create a new `data.frame` called `gapminder_small` that only contains rows 1 through 9
 > and 19 through 23. You can do this in one or two steps.
 >
-> > ## Solution to challenge 7
+> > ## Solution to challenge 8
 > >
 > > 1.  `gapminder` is a data.frame so needs to be subsetted on two dimensions. `gapminder[1:20, ]` subsets the data to give the first 20 rows and all columns.
 > >
