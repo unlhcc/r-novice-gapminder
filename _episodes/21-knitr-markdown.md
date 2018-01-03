@@ -235,42 +235,6 @@ produced them.
 > - Read the gapminder data
 > - Create a plot
 >
-> > Solution for challenge 2
-> > 
-> > Add code chunks to your Markdown document which will:
-> >
-> > - Load the ggplot2 package
-> > 
-> > ~~~
-> > &#96;&#96;&#96;{r ggplot}
-> > library(ggplot2)
-> > &#96;&#96;&#96;
-> > ~~~
-> > {. r}
-> >
-> > - Read the gapminder data
-> > 
-> > ~~~
-> > &#96;&#96;&#96;{r load_data}
-> > gapminder <- read.csv(file = "data/gapminder-FiveYearData.csv",
-> >                       header = TRUE)
-> > &#96;&#96;&#96;
-> > ~~~
-> > {. r}
-> > 
-> > - Create a plot
-> > 
-> > ~~~
-> > &#96;&#96;&#96;{r plot_lifeExp_vs_time}
-> > ggplot(data = gapminder, aes(x = year, y = lifeExp, color = country)) +
-> >   geom_line() + 
-> >   theme(legend.position = "none")
-> > &#96;&#96;&#96;
-> > ~~~
-> > {. r}
-> > 
-> > Compile your document and check out the new output.
->{: .solution}
 {: .challenge}
 
 ## How things get compiled
@@ -330,27 +294,11 @@ want to use `fig.path` to define separate prefixes for the figure file
 names, like `fig.path="Figs/cleaning-"` and `fig.path="Figs/analysis-"`.
 
 
-> ## Challenge 3 - Test
+> ## Challenge 3
 >
 > Edit the code chunks you added in challenge 2 to use chunk options to control the size of a figure
 > and to hide the code.
 >
-> > Solution for challenge 3
-> > 
-> > Edit the code chunks you added in challenge 2 to use chunk options to control the size of a figure
-> > and to hide the code.
-> > 
-> > First, let's hide the code that we used to load the data. To do that, we will need to change this:
-> > 
-> > ```
-> > &#96;&#96;&#96;{r load_data}
-> > gapminder <- read.csv(file = "data/gapminder-FiveYearData.csv",
-> >                       header = TRUE)
-> > &#96;&#96;&#96;
-> > ```
-> > 
-> > 
->{: .solution}
 {: .challenge}
 
 
