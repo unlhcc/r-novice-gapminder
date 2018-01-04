@@ -450,7 +450,7 @@ d_ply(
 > ~~~
 > {: .r}
 >
-> > Solution to challenge 1
+> > ## Solution to challenge 1
 > > 
 > > Without running them, which of the following will calculate the average
 > > life expectancy per continent:
@@ -473,7 +473,7 @@ d_ply(
 > Calculate the average life expectancy per continent. Which has the longest?
 > Which had the shortest?
 >
-> > Solution to challenge 2
+> > ## Solution to challenge 2
 > > 
 > > To calculate the average life expectancy per continent, we can use `ddply` to calculate the averages,
 > > and pipe the result into `arrange()` to sort the values to easily find out the shortest and longest:
