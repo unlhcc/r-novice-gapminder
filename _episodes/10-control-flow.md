@@ -572,7 +572,8 @@ output_vector2
 >
 > > Solution for Challenge 5
 > >
-> > We will use the `grep` command that was introduced in the Unix Shell lesson to find countries that start with "B."
+> > We will use the `grep` command that was introduced in the Unix Shell lesson 
+> > to find countries that start with "B."
 > > Lets understand how to do this first.
 > > Following from the Unix shell section we may be tempted to try the following
 > > 
@@ -581,7 +582,8 @@ output_vector2
 > > ~~~
 > > {: .r}
 > >
-> > But when we evaluate this command it returns the indices of the factor variable `country` that start with "B."
+> > But when we evaluate this command it returns the indices of the factor variable 
+> > `country` that start with "B."
 > > To get the values, we must add the `value=TRUE` option to the `grep` command:
 > >
 > > 
@@ -590,14 +592,17 @@ output_vector2
 > > ~~~
 > > {: .r}
 > >
-> > We will now store these countries in a variable called candidateCountries, and then loop over each entry in the variable.
-> > Inside the loop, we evaluate the average life expectancy for each country, and if the average life expectancy is less than 50 we use base-plot to plot the evolution of average life expectancy:
+> > We will now store these countries in a variable called candidateCountries, and then 
+> > loop over each entry in the variable.
+> > Inside the loop, we evaluate the average life expectancy for each country, and
+> > if the average life expectancy is less than 50 we use base-plot to plot the evolution
+> >  of average life expectancy:
 > >
 > > 
 > > ~~~
 > > thresholdValue <- 50
 > > candidateCountries <- grep("^B", unique(gapminder$country), value=TRUE)
-> > > >
+> > 
 > > for( iCountry in candidateCountries){
 > >     tmp <- mean(subset(gapminder, country==iCountry)$lifeExp)
 > >     
