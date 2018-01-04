@@ -570,7 +570,7 @@ output_vector2
 > Hint: R has a `grep()` function that works like the `grep` you learned in the shell.
 > Look at the help documentation for information on how to use it.
 >
-> > Solution for Challenge 5
+> > ## Solution for Challenge 5
 > >
 > > We will use the `grep` command that was introduced in the Unix Shell lesson 
 > > to find countries that start with "B."
