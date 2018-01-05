@@ -114,9 +114,7 @@ documents in different formats.
 At some point, you'll also want to write out data from R.
 
 We can use the `write.table` function for this, which is
-very similar to the `read.table` function that we mentioned previously in Lesson 2. 
-For more information on reading in your own data in R and the `read.table` function, check out the
-supplemental lesson [Reading and Writing CSV Files](https://carriebrown.github.io/r-novice-gapminder-2/11-supp-read-write-csv/).
+very similar to the `read.table` function that we mentioned previously. 
 
 Let's create a data-cleaning script, for this analysis, we
 only want to focus on the gapminder data for Australia:

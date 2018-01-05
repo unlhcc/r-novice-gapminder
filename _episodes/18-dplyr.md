@@ -85,6 +85,7 @@ pipes (`%>%`) to combine them.
 3. `group_by()`
 4. `summarize()`
 5. `mutate()`
+6. `count()`
 
 If you have have not installed this package earlier, please do so:
 
@@ -447,7 +448,7 @@ expectency per continent:
 ~~~
 gapminder %>%
     group_by(continent) %>%
-    summarize(se_pop = sd(lifeExp)/sqrt(n()))
+    summarize(se_le = sd(lifeExp)/sqrt(n()))
 ~~~
 {: .r}
 
